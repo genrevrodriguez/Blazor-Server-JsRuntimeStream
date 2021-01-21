@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace iTools.Utilities.JsRuntimeStream
+namespace JsRuntimeStream
 {
     internal abstract class JSInteropStream : Stream
     {

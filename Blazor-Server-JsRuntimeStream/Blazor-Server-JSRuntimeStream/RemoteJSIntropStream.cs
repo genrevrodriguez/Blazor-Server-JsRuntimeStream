@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace iTools.Utilities.JsRuntimeStream
+namespace JsRuntimeStream
 {
     internal class RemoteJSInteropStream : JSInteropStream
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace iTools.Utilities.JsRuntimeStream
+namespace JsRuntimeStream
 {
 	public class JSRuntimeStream : IJSRuntimeStream
 	{

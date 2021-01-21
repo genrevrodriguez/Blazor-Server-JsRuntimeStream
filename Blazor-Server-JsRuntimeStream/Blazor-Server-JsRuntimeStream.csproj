@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <RootNamespace>Blazor_Server_JsRuntimeStream</RootNamespace>
+    <RootNamespace>JsRuntimeStream</RootNamespace>
     <PackageTags>blazor, blazor server, stream</PackageTags>
     <LangVersion>8.0</LangVersion>
     <PackageProjectUrl>https://github.com/genrevrodriguez/Blazor-Server-JsRuntimeStream</PackageProjectUrl>
@@ -16,20 +16,13 @@
     <Copyright>Genrev Gabriel Rodriguez</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Genrev Gabriel Rodriguez</Authors>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.4</VersionPrefix>
     <Company>Genrev</Company>
     <PackageId>Blazor-Server-JsRuntimeStream</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="wwwroot\dist\js-interop-stream-functions.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="wwwroot\dist\js-interop-stream-functions.js">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

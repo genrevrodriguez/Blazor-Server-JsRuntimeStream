@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Versioning;
 
-namespace iTools.Utilities.JsRuntimeStream
+namespace JsRuntimeStream
 {
     /// <summary>
     /// Repesents configurable options for <see cref="RemoteJSInteropStream"/>.
