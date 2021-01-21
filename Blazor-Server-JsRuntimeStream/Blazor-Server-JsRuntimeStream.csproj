@@ -16,7 +16,7 @@
     <Copyright>Genrev Gabriel Rodriguez</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Genrev Gabriel Rodriguez</Authors>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>1.0.1</VersionPrefix>
     <Company>Genrev</Company>
     <PackageId>Blazor-Server-JsRuntimeStream</PackageId>
   </PropertyGroup>
