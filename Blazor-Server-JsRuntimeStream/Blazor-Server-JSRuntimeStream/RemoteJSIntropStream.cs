@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace JsRuntimeStream
+namespace iTools.Utilities.JsRuntimeStream
 {
     internal class RemoteJSInteropStream : JSInteropStream
     {
@@ -53,11 +53,12 @@ namespace JsRuntimeStream
                     using var readSegmentCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
                     readSegmentCts.CancelAfter(_segmentFetchTimeout);
 
-                    var args = new object[] { offset, segmentSize, _jsRuntimeStreamInfo.Identifier }.Concat(_jsRuntimeStreamInfo.Arguments).ToArray();
                     var bytes = await _jsRuntime.InvokeAsync<byte[]>(
                         RemoteJsInteropStreamJsFunctions.ReadData,
                         readSegmentCts.Token,
-                        args: args);
+                        _jsRuntimeStreamInfo.Id,
+                        offset, 
+                        segmentSize);
 
                     if (bytes is null || bytes.Length != segmentSize)
                     {
@@ -133,6 +134,8 @@ namespace JsRuntimeStream
             _fillBufferCts.Cancel();
 
             _isDisposed = true;
+
+            _jsRuntime.InvokeVoidAsync(RemoteJsInteropStreamJsFunctions.Destroy, _jsRuntimeStreamInfo.Id);
 
             base.Dispose(disposing);
         }

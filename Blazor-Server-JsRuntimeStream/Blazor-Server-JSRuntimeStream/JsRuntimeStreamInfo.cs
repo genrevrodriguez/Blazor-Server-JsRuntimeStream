@@ -4,14 +4,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace JsRuntimeStream
+namespace iTools.Utilities.JsRuntimeStream
 {
 	internal class JsRuntimeStreamInfo
 	{
-		public string Identifier { get; set; }
+		public int Id { get; set; }
 
 		public long Size { get; set; }
-
-		public object?[]? Arguments { get; set; }
 	}
 }

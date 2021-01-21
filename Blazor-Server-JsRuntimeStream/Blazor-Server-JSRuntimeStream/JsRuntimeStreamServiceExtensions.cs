@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JsRuntimeStream
+namespace iTools.Utilities.JsRuntimeStream
 {
 	public static class JsRuntimeStreamServiceExtensions
 	{

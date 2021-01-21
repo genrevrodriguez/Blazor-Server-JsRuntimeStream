@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace JsRuntimeStream
+namespace iTools.Utilities.JsRuntimeStream
 {
 	public class JSRuntimeStream : IJSRuntimeStream
 	{
@@ -24,13 +24,7 @@ namespace JsRuntimeStream
 
 		public async Task<Stream> InvokeReadStream(string identifier, CancellationToken token, params object?[]? args)
 		{
-			var jsRuntimeStreamInfo = new JsRuntimeStreamInfo()
-			{
-				Identifier = identifier,
-				Size = await jsRuntime.InvokeAsync<long>(RemoteJsInteropStreamJsFunctions.GetMemorySize, token, identifier, args),
-				Arguments = args
-			};
-
+			var jsRuntimeStreamInfo = await jsRuntime.InvokeAsync<JsRuntimeStreamInfo>(RemoteJsInteropStreamJsFunctions.Init, token, identifier, args);
 			return new RemoteJSInteropStream(jsRuntime, jsRuntimeStreamInfo, options.Value, token);
 		}
 	}
