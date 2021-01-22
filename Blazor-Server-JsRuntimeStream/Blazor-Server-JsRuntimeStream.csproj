@@ -1,9 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
     <RootNamespace>JsRuntimeStream</RootNamespace>
+
+    <OutputType>Library</OutputType>
     <PackageTags>blazor, blazor server, stream</PackageTags>
     <LangVersion>8.0</LangVersion>
     <PackageProjectUrl>https://github.com/genrevrodriguez/Blazor-Server-JsRuntimeStream</PackageProjectUrl>
@@ -16,19 +18,19 @@
     <Copyright>Genrev Gabriel Rodriguez</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Genrev Gabriel Rodriguez</Authors>
-    <VersionPrefix>1.0.4</VersionPrefix>
+    <VersionPrefix>1.0.6</VersionPrefix>
     <Company>Genrev</Company>
     <PackageId>Blazor-Server-JsRuntimeStream</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="wwwroot\dist\js-interop-stream-functions.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.0" />
     <PackageReference Include="System.IO.Pipelines" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dist\js-interop-stream-functions.js" />
   </ItemGroup>
 
 </Project>
