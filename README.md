@@ -33,6 +33,7 @@ services.AddJsRuntimeStream();
 **Basic Example**
 ```cs
 @using JsRuntimeStream
+@using System.IO
 
 @code {
     [Inject] private IJsRuntimeStream jsRuntimeStream { get; set; }
