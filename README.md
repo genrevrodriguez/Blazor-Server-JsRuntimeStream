@@ -17,7 +17,7 @@ Blazor Server applications will need to include the following JS files in their 
 Add the JS script at the bottom of the page using the following script tag.
 
 ```html
-    <script src="_content/Blazor-Server-JsRuntimeStream/js-interop-stream-functions.js"></script>
+<script src="_content/Blazor-Server-JsRuntimeStream/js-interop-stream-functions.js"></script>
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ Add the JS script at the bottom of the page using the following script tag.
 Add registration of service to Startup.cs
 
 ```cs
-    services.AddJsRuntimeStream();
+services.AddJsRuntimeStream();
 ```
 
 **Basic Example**
