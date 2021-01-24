@@ -17,7 +17,7 @@ Blazor Server applications will need to include the following JS files in their 
 Add the JS script at the bottom of the page using the following script tag.
 
 ```html
-<script src="_content/Blazor-Server-JsRuntimeStream/js-interop-stream-functions.js"></script>
+<script src="_content/Blazor-Server-JsRuntimeStream/js-interop-stream-functions.js" type="text/javascript"></script>
 ```
 
 ## Usage
@@ -39,23 +39,23 @@ services.AddJsRuntimeStream();
 
     public async Task<string> GetLargeString(CancellationTokenSource cts = default)
     {
-				using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cts.Token);
-				using var memoryStream = new MemoryStream();
-				await stream.CopyToAsync(memoryStream);
+	using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cts.Token);
+	using var memoryStream = new MemoryStream();
+	await stream.CopyToAsync(memoryStream);
 
-				return System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
+	return System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
     
     public async Task<string> GetLargeStringWithProgressReport(IProgress<double> progress, CancellationTokenSource cts = default)
     {
-				var buffer = new byte[4 * 1096];
-				int bytesRead;
-				double totalRead = 0;
+	var buffer = new byte[4 * 1096];
+	int bytesRead;
+	double totalRead = 0;
 
-				using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cts.Token);
-				using var memoryStream = new MemoryStream();
-        
-				while ((bytesRead = await stream.ReadAsync(buffer, cts.Token)) != 0)
+	using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cts.Token);
+	using var memoryStream = new MemoryStream();
+
+	while ((bytesRead = await stream.ReadAsync(buffer, cts.Token)) != 0)
         {
           totalRead += bytesRead;
           await memoryStream.WriteAsync(buffer, cts.Token);
@@ -63,7 +63,7 @@ services.AddJsRuntimeStream();
           progress.Report((totalRead / stream.Length) * 100);
         }
         
-				return System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
+	return System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
 }
 ```
