@@ -38,28 +38,28 @@ services.AddJsRuntimeStream();
 @code {
     [Inject] private IJsRuntimeStream jsRuntimeStream { get; set; }
 
-    public async Task<string> GetLargeString(CancellationTokenSource cts = default)
+    public async Task<string> GetLargeString(CancellationToken cancellationToken = default(CancellationToken))
     {
-	using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cts.Token);
+	using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cancellationToken);
 	using var memoryStream = new MemoryStream();
-	await stream.CopyToAsync(memoryStream);
+	await stream.CopyToAsync(memoryStream, cancellationToken);
 
 	return System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
     
-    public async Task<string> GetLargeStringWithProgressReport(IProgress<double> progress, CancellationTokenSource cts = default)
+    public async Task<string> GetLargeStringWithProgressReport(IProgress<double> progress, CancellationToken cancellationToken = default(CancellationToken))
     {
 	var buffer = new byte[4 * 1096];
 	int bytesRead;
 	double totalRead = 0;
 
-	using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cts.Token);
+	using var stream = await jsRuntimeStream.InvokeReadStream("window.getLargeString", cancellationToken);
 	using var memoryStream = new MemoryStream();
 
-	while ((bytesRead = await stream.ReadAsync(buffer, cts.Token)) != 0)
+	while ((bytesRead = await stream.ReadAsync(buffer, cancellationToken)) != 0)
         {
           totalRead += bytesRead;
-          await memoryStream.WriteAsync(buffer, cts.Token);
+          await memoryStream.WriteAsync(buffer, cancellationToken);
 
           progress.Report((totalRead / stream.Length) * 100);
         }
